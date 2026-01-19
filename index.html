@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anbarasi S | Full Stack Python Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer" />
+
+<style>
+/* ===== Base Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif; /* modern crisp font */
+}
+
+/* ===== Body ===== */
+body {
+  background: #f4f6fb;
+  color: #2c333d;
+  line-height: 1.65;
+  letter-spacing: 0.2px;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 24px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* ===== Header ===== */
+.header {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  color: #fff;
+  padding: 28px 26px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
+  animation: slideDown 0.7s ease;
+}
+
+.header h1 {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.header h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 6px;
+  color: #c7d2fe;
+}
+
+/* ===== Contact ===== */
+.contact {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #ffffff;
+  opacity: 0.95;
+}
+
+.contact a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.contact a:hover {
+  color: #00acee;
+  transform: scale(1.05);
+}
+
+/* ===== Sections ===== */
+.section {
+  margin-top: 26px;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #0f172a;
+  display: inline-block;
+  padding-bottom: 4px;
+  letter-spacing: 0.7px;
+}
+
+.text {
+  font-size: 16px;
+  margin-top: 6px;
+  color: #374151;
+  line-height: 1.7;
+}
+
+/* ===== Grid ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+/* ===== Card ===== */
+.card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.card p,
+.card li {
+  font-size: 16px;
+  color: #4b5563;
+}
+
+ul {
+  padding-left: 18px;
+  margin-top: 6px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+/* ===== Skills =====
+.skills span {
+  display: inline-block;
+  background: #e2e8f0;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 5px 5px 0 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.skills span:hover {
+  background: #c7d2fe;
+  transform: scale(1.07);
+} */
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 15px;
+  color: #6b7280;
+  opacity: 0.85;
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 1024px) {
+  .header h1 {
+    font-size: 28px;
+  }
+  .header h2 {
+    font-size: 15px;
+  }
+  .section-title {
+    font-size: 16px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .text,
+  .card p,
+  .card li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  .header {
+    padding: 20px 16px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .contact {
+    font-size: 13px;
+  }
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>Anbarasi S</h1>
+      <h2>Full Stack Python Developer</h2>
+      <div class="contact">
+  <a href="tel:+917339592998">
+    <i class="fa-solid fa-phone"></i> +91-7339592998
+  </a> &nbsp; | &nbsp;
+  
+  <a href="mailto:anbarasisrihari2@gmail.com">
+    <i class="fa-solid fa-envelope"></i> anbarasisrihari2@gmail.com
+  </a> &nbsp; | &nbsp;
+  
+  <a href="https://www.linkedin.com/in/anbarasisrihari2" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-linkedin"></i> LinkedIn
+  </a> &nbsp; | &nbsp;
+  
+  <a href="https://github.com/anbarasisrihari2" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-github"></i> GitHub
+  </a>
+</div>
+
+    </div>
+
+    <!-- Professional Summary -->
+    <div class="section">
+      <div class="section-title">
+        <i class="fa-solid fa-user-tie"></i> Professional Summary
+      </div>
+      <p class="text">
+        Results-oriented Full Stack Python Developer with hands-on industry experience in designing,
+        developing, and deploying robust web applications. Strong foundation in backend development
+        using Django and database-driven systems, combined with modern frontend frameworks like React
+        and Next.js. Adept at translating real-world business requirements into scalable technical
+        solutions, with experience in AI-driven systems, live-stream integrations, and cloud deployment.
+      </p>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-title">
+        <i class="fa-solid fa-graduation-cap"></i> Education
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>B.E. – Electronics & Communication Engineering</h3>
+          <p>University College of Engineering Arni (2020 – 2024)</p>
+          <p>CGPA: 8.46 | Tiruvannamalai, Tamil Nadu</p>
+        </div>
+        <div class="card">
+          <h3>Higher Secondary (Maths – Biology)</h3>
+          <p>St. Joseph Academy Matric Hr Sec School (2019 – 2020)</p>
+          <p>Percentage: 73 | Kallakurichi, Tamil Nadu</p>
+        </div>
+        <div class="card">
+          <h3>Secondary School Leaving Certificate</h3>
+          <p>St. Joseph Academy Matric Hr Sec School (2017 – 2018)</p>
+          <p>Percentage: 91 | Kallakurichi, Tamil Nadu</p>
+        </div>
+      </div>
+    </div>
+
+<!-- Coursework / Skills -->
+<div class="section">
+  <div class="section-title">
+    <i class="fa-solid fa-book-open-reader"></i> Coursework & Skills
+  </div>
+
+  <div class="skills-group">
+    <div class="skill-row">
+      <strong>Programming Languages:</strong>
+      <span>Python</span>
+    </div>
+
+    <div class="skill-row">
+      <strong>Frameworks & Libraries:</strong>
+      <span>Django, Tkinter</span>
+    </div>
+
+    <div class="skill-row">
+      <strong>Web Technologies:</strong>
+      <span>HTML5, CSS3, JavaScript (ES6+), ReactJS, Next.js</span>
+    </div>
+
+    <div class="skill-row">
+      <strong>Databases:</strong>
+      <span>MySQL, SQL</span>
+    </div>
+
+    <div class="skill-row">
+      <strong>Development Tools:</strong>
+      <span>XAMPP, Postman</span>
+    </div>
+
+    <div class="skill-row">
+      <strong>Cloud & OS:</strong>
+      <span>AWS, Windows OS</span>
+    </div>
+  </div>
+</div>
+
+<style>
+ 
+  .skills-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 24px;
+  }
+
+  .skill-row {
+    font-size: 14px;
+    line-height: 1;
+    background: #f1f5f9;        
+    padding: 6px 10px;         
+    border-radius: 4px;           
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .skill-row strong {
+    color: #0f172a;
+    margin-right: 6px;
+    min-width: 130px; /* Align labels in a column */
+  }
+
+  .skill-row span {
+    color: #334155;
+    background: #e2e8f0;       /* Slight highlight for the skill */
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* Responsive: single column on tablets */
+  @media (max-width: 768px) {
+    .skills-group {
+      grid-template-columns: 1fr;
+      gap: 10px 10px;
+    }
+  }
+
+  /* Extra small screens: reduce font size and padding */
+  @media (max-width: 480px) {
+    .skill-row {
+      font-size: 13px;
+      padding: 4px 8px;
+    }
+
+    .skill-row strong {
+      min-width: 100px;
+    }
+
+    .skill-row span {
+      padding: 1px 4px;
+    }
+  }
+</style>
+
+<!-- ===== PROJECTS SECTION ===== -->
+<style>
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Project Card */
+  .project-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+
+
+  /* Project Image */
+  .project-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .project-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .project-card ul {
+    padding-left: 18px;
+    margin-top: 4px;
+    flex-grow: 1;
+  }
+
+  .project-card li {
+    font-size: 13px;
+    color: #4b5563;
+    margin-bottom: 4px;
+  }
+
+  /* Project Links */
+  .project-links {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .project-links a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+    text-decoration: none;
+  }
+
+  .project-links a:hover {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+/* ===== Project Button ===== */
+.project-links a {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.25);
+}
+
+
+.project-links a:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.3);
+}
+
+
+</style>
+
+<div class="section">
+  <div class="section-title">
+    <i class="fa-solid fa-diagram-project"></i> Projects
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <img src="Hotel.jpeg" 
+     alt="Hotel Billing System" 
+     class="project-img">
+
+      <h3>Hotel Menu & Billing Management System</h3>
+      <ul>
+        <li>Desktop application to manage orders and billing operations.</li>
+        <li>Real-time price calculation with quantity-based logic.</li>
+        <li>Clean Tkinter UI ensuring smooth transaction flow.</li>
+      </ul>
+      <!-- <div class="project-links">
+        <a href="https://github.com/yourusername/hotel-billing-system" target="_blank">GitHub</a>
+      </div> -->
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <img src="image (1).png" alt="Workshop Platform" class="project-img">
+      <h3>Workshop Platform – iSpark Innovators</h3>
+      <ul>
+        <li>Responsive website supporting live innovation workshops.</li>
+        <li>Structured schedules and program flow for learners.</li>
+        <li>Optimized UI for mobile and desktop devices.</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://www.isparkinnovators.com/index" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <img src="image (3).png" alt="AI Learning Platform" class="project-img">
+      <h3>Agentic AI Learning & Placement Platform</h3>
+      <ul>
+        <li>AI-driven learning paths and placement recommendations.</li>
+        <li>Role-based dashboards for students and recruiters.</li>
+        <li>Deployed on AWS with scalable architecture.</li>
+      </ul>
+      <div class="project-links">
+        <!-- <a href="https://github.com/yourusername/ai-learning-platform" target="_blank">GitHub</a> -->
+        <a href="https://i-spark-skills-ai-omega.vercel.app/" target="_blank">View Project</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- ===== END PROJECTS SECTION ===== -->
+
+
+
+    <!-- Internship -->
+    <div class="section">
+      <div class="section-title">
+        <i class="fa-solid fa-briefcase"></i> Internship
+      </div>
+      <div class="card">
+        <h3>Python Intern – Besant Technologies</h3>
+        <ul>
+          <li>Gained practical exposure to backend development using Python and Django.</li>
+          <li>Worked with relational databases, application logic, and UI components.</li>
+          <li>Applied industry-standard coding practices and debugging techniques.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <div class="section-title">
+        <i class="fa-solid fa-building"></i> Professional Experience
+      </div>
+      <div class="card">
+        <h3>Python Developer – iSpark Learning Solutions</h3>
+        <ul>
+          <li>Actively developing and enhancing educational platforms with real-time features.</li>
+          <li>Handling backend logic, database optimization, and API integrations.</li>
+          <li>Supporting deployment, cloud configuration, and application monitoring on AWS.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="section">
+      <div class="section-title">
+        <i class="fa-solid fa-certificate"></i> Certifications
+      </div>
+      <ul class="text">
+        <li>Internet of Things (IoT) – SkillsDA</li>
+        <li>Python Programming – Great Learning</li>
+        <li>Digital Marketing – Smart Internz</li>
+        <li>Python Developer Certification – Besant Technologies</li>
+      </ul>
+    </div>
+
+    <footer>
+      © 2026 Anbarasi S | Full Stack Python Developer
+    </footer>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.section').forEach((sec, i) => {
+      sec.style.opacity = 0;
+      sec.style.transform = "translateY(12px)";
+      setTimeout(() => {
+        sec.style.transition = "0.45s ease";
+        sec.style.opacity = 1;
+        sec.style.transform = "translateY(0)";
+      }, i * 120);
+    });
+  </script>
+</body>
+
+</html>
